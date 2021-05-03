@@ -1,6 +1,6 @@
 # Lucky Styleable
 
-TODO: Write a description here
+Scoped CSS for your Lucky HTML pages and components.
 
 ## Installation
 
@@ -20,11 +20,37 @@ TODO: Write a description here
 require "lucky_styleable"
 ```
 
-TODO: Write usage instructions here
+Include the module in the component you want to style
 
-## Development
+```crystal
+# src/components/base/header.cr
+class Base::Header < BaseComponent
+  include Lucky::Styleable
 
-TODO: Write development instructions here
+  def render
+    div class: styles['header'] do
+      h2 "HEADER", styles['header-title']
+    end
+    style_tag
+  end
+end
+```
+
+Then in css
+
+```css
+# src/components/base/header.css
+.header {
+  width: 100%;
+  height: 20px;
+}
+
+.header-title {
+  color: red;
+}
+```
+
+The css will be modified/scoped so that it doesn't bleed into other places outside of the component.
 
 ## Contributing
 
