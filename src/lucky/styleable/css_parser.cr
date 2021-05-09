@@ -13,15 +13,17 @@ class Lucky::Styleable::CssParser
   def parse : Css::Stylesheet
     while @style_io.peek && !@style_io.peek.try(&.empty?)
       selectors = parse_selectors
+      next if selectors.nil?
+
       declarations = parse_declarations
       @css_stylesheet.rules << Css::Rule.new(selectors, declarations)
     end
     @css_stylesheet
   end
 
-  def parse_selectors : Array(Css::Selector)
+  def parse_selectors : Array(Css::Selector)?
     selectors = @style_io.gets('{')
-    return [] of Css::Selector if selectors.nil? || selectors.blank?
+    return if selectors.nil? || selectors.strip.empty?
 
     selectors.chomp('{')
       .split(',')

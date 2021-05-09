@@ -7,3 +7,8 @@ authors:
 crystal: 1.0.0
 
 license: MIT
+
+dependencies:
+  lucky:
+    github: luckyframework/lucky
+    branch: master
