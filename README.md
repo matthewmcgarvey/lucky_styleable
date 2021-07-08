@@ -2,6 +2,8 @@
 
 Scoped CSS for your Lucky HTML pages and components.
 
+Be wary of using this library. I'm watching https://github.com/github/view_component/pull/677 and won't feel confident in this solution unless that is merged.
+
 ## Installation
 
 1. Add the dependency to your `shard.yml`:
